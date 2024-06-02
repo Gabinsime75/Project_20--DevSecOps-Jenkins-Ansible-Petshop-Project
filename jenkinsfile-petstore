@@ -3,6 +3,7 @@ pipeline{
     tools{
         jdk 'jdk17'
         maven   'maven3'
+        nodejs  'node19'
     }
 
     stages{
@@ -27,6 +28,12 @@ pipeline{
         stage ('maven test'){
             steps{
                 sh 'mvn test'
+            }
+        }
+
+        stage ('Install dependencies'){
+            steps{
+                sh  'npm install'
             }
         }
     }
