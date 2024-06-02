@@ -1,0 +1,33 @@
+pipeline{
+    agent   any
+    tools{
+        jdk 'jdk17'
+        maven   'maven3'
+    }
+
+    stages{
+        stage ('clean Worksoace'){
+            steps{
+                cleanWs()
+            }
+        }
+
+        stage ('checkout scm'){
+            steps{
+                git branch: 'main', url: 'https://github.com/Gabinsime75/Project_20--DevSecOps-Jenkins-Ansible-Petshop-Project.git'
+            }
+        }
+
+        stage ('maven compile'){
+            steps{
+                sh 'mvn clean cpmpile'
+            }
+        }
+
+        stage ('maven test'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+    }
+}
