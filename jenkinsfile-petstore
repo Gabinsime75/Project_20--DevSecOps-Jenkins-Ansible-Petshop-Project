@@ -20,7 +20,7 @@ pipeline{
 
         stage ('maven compile'){
             steps{
-                sh 'mvn clean cpmpile'
+                sh 'mvn clean compile'
             }
         }
 
